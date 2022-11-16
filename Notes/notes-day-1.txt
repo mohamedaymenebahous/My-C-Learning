@@ -8,3 +8,6 @@ turn a child process
 the fork() function, in a way, clones in the child process, all the previous 
 processes each time it is called (visualisation of the call of fork() function
 3 times [image-1]) 
+
+The wait(NULL) function waits for the child process to finish
+executing for the parent process to start
