@@ -7,4 +7,4 @@ Using two fork() functions actually creates a child process that creates by his
 turn a child process
 the fork() function, in a way, clones in the child process, all the previous 
 processes each time it is called (visualisation of the call of fork() function
-3 times [image-1])
+3 times [image-1]) 
