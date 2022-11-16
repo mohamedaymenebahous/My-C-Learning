@@ -1,0 +1,10 @@
+The fork() function creates a child process that goes along with the parent/main 
+process (2 processes in total) and they both execute the line of code, this 
+function also returns an integer (may be used as an identifier for the process)
+The child process' id is always 0, while the parent process' id can be another 
+integer
+Using two fork() functions actually creates a child process that creates by his
+turn a child process
+the fork() function, in a way, clones in the child process, all the previous 
+processes each time it is called (visualisation of the call of fork() function
+3 times [image-1])
