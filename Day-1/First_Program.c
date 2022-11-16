@@ -3,6 +3,8 @@
 #include <string.h>
 #include <unistd.h>
 
+//uncomment each experiment and debug and run to see results
+
 int main(int argc, char* argv[]) 
 {
     //1st experiment
@@ -25,6 +27,16 @@ int main(int argc, char* argv[])
     /*
     fork();
     fork(); 
+    printf("Hello World\n");
+    */
+
+    //4th experiment
+    /*
+    int id = fork();
+    if (id != 0)
+    {
+        fork();
+    }
     printf("Hello World\n");
     */
 
