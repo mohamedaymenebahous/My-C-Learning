@@ -9,5 +9,12 @@ the fork() function, in a way, clones in the child process, all the previous
 processes each time it is called (visualisation of the call of fork() function
 3 times [image-1]) 
 
-The wait(NULL) function waits for the child process to finish
-executing for the parent process to start
+The wait(NULL) function waits (stops the execution of) for the child process to 
+finish executing for the parent process to start
+
+The getpid() function returns the process id of the child process
+The getppid() function returns the process id of the parent process
+When using the fork() function it's for the best to make sure that the child 
+process terminate first before the parent process (to avoid zombie process)
+(Zombie process refers to any process that is essentially removed from the system 
+as 'defunct', but still somehow resides in the processor's memory as a 'zombie')
