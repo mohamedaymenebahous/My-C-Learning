@@ -18,3 +18,9 @@ When using the fork() function it's for the best to make sure that the child
 process terminate first before the parent process (to avoid zombie process)
 (Zombie process refers to any process that is essentially removed from the system 
 as 'defunct', but still somehow resides in the processor's memory as a 'zombie')
+
+[image-2]
+
+The wait function waits for only one child process to finish, the other children 
+processes termination is ignored wheter it finishes or not, which puts us in a pickle with this function (be
+careful when using it with multiple children processes)
