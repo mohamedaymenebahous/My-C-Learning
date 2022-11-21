@@ -1,0 +1,4 @@
+The pipe() function creates a pipe that acts like a bridge between two processes.
+
+To work with pipes in C, we need to close the file descriptor before using write
+or read functions, then we close the current file descriptor
