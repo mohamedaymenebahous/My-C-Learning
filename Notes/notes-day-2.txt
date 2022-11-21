@@ -2,3 +2,12 @@ The pipe() function creates a pipe that acts like a bridge between two processes
 
 To work with pipes in C, we need to close the file descriptor before using write
 or read functions, then we close the current file descriptor
+
+********go back to Second_Program_test********
+
+The mkfifo function creates a fifo file
+This file can opened, written in, and read (like a pipe more or less)
+The open function (from fnctl header file) return an important things 
+which isan integer that represents a file descriptor
+When opening a fifo file for writing only, it blocks the execution of
+the c file, until it is opened for reading.

@@ -43,7 +43,6 @@ int main(int argc, char *argv[])
     }
 
     int sum = 0;
-    
     int i;
     for (i = start; i < end; i++)
     {
@@ -51,108 +50,39 @@ int main(int argc, char *argv[])
     }
     printf("Calculated partial sum : %d\n", sum);
 
-    int sumFromChild1, sumFromChild2;
-    int totalSum1, totalSum2;
+    //int sumFromChild1, sumFromChild2;
+    //int totalSum1, totalSum2;
+    int totalSum1;
 
     if (id1 == 0)
     {
         close(fd[0]);
-        if (write(fd[1], &sum, sizeof(sum)))
-        {
-            return 3;
-        }
+        write(fd[1], &sum, sizeof(sum));
         close(fd[1]);
+        wait(NULL);
     } 
     else if (id2 == 0)
-    {  
+    {
+        int sumForChild1;
         close(fd[1]);
-        if (read(fd[0], &sumFromChild1, sizeof(sumFromChild1)))
-        {
-            return 4;
-        }
-        totalSum1 = sum + sumFromChild1;
+        read(fd[0], &sumForChild1, sizeof(sumForChild1));
         close(fd[0]);
-        if (write(fd[2], &totalSum1, sizeof(totalSum1)))
-        {
-            return 5;
-        }
+        totalSum1 = sum + sumForChild1;
+
+        write(fd[2], &totalSum1, sizeof(totalSum1));
         close(fd[2]);
     }
     else 
     {
+        int sumFromChild2;
         close(fd[2]);
-        if(read(fd[2], &sumFromChild2, sizeof(sumFromChild2)))
-        {
-            return 6;
-        }
-        close(fd[2]);
+        read(fd[0], &sumFromChild2, sizeof(sumFromChild2));
+        close(fd[0]);
 
-        totalSum2 = sum + totalSum1;
+        int totalSum2 = sum + sumFromChild2;
         printf("Total sum : %d\n", totalSum2);
         wait(NULL);
     }
-
-    /*
-    int arr[] = { 1, 2, 3, 4, 1, 2, 5, 6};
-    int arrSize = sizeof(arr) / sizeof(int);
-    int start, end;
-    int fd[2];
-
-    if (pipe(fd) == -1) 
-    {
-        return 1;
-    }
-
-    int id = fork();
-    if (id == -1) 
-    {
-        return 2;
-    }
-
-    if (id == 0)
-    {
-        start = 0;
-        end = arrSize / 2;
-    }
-    else 
-    {
-        start = arrSize / 2;
-        end = arrSize;
-    }
-
-    int sum = 0;
-    int i;
-    for (i = start; i < end; i++)
-    {
-        sum += arr[i];
-    }
-
-    printf("Calculated partial sum : %d\n", sum);
-
-    if (id == 0)
-    {
-        close(fd[0]);
-        if (write(fd[1], &sum, sizeof(sum)))
-        {
-            return 3;
-        }
-        close(fd[1]);
-    }
-    else
-    {
-        int sumFromChild;
-        close(fd[1]);
-        if (read(fd[0], &sumFromChild, sizeof(sumFromChild)))
-        {
-            return 4;
-        }
-        close(fd[0]);
-
-        int totalSum = sum + sumFromChild;
-        printf("Total sum : %d\n", totalSum);
-        wait(NULL);
-    }
-    */
-
+    
     return 0;
 }

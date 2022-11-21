@@ -54,13 +54,10 @@ int main(int argc, char *argv[])
         }
         close(fd[1]);
     }
-    else{
+    else {
         int sumFromChild;
         close(fd[1]);
-        if (read(fd[0], &sumFromChild, sizeof(sumFromChild)))
-        {
-            return 4;
-        }
+        read(fd[0], &sumFromChild, sizeof(sumFromChild));
         close(fd[0]);
 
         int totalSum = sum + sumFromChild;
