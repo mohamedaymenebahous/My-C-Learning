@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
 {
     int arr[5];
     srand(time(NULL));
+
     for (int i = 0; i < 5; i++)
     {
         arr[i] = rand() % 100; 
@@ -22,6 +23,7 @@ int main(int argc, char *argv[])
     }
 
     int fd = open("sum", O_WRONLY);
+
     if (fd == -1)
     {
         return 1;
@@ -44,6 +46,21 @@ int main(int argc, char *argv[])
     }*/
 
     close(fd);
+
+    int fd2 = open("sum", O_RDONLY);
+    if (fd2 == -1)
+    {
+        return 3;
+    }
+
+    int sum;
+
+    if (read(fd2, &sum, sizeof(sum)) == -1)
+    {
+        return 4;
+    }
+
+    printf("Received result : %d\n", sum);
 
     return 0;
 }

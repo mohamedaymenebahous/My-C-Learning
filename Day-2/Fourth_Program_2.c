@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
 {
     int arr[5];
     int fd = open("sum", O_RDONLY);
+
     if (fd == -1)
     {
         return 1;
@@ -45,6 +46,19 @@ int main(int argc, char *argv[])
         sum += arr[i];
     }
     printf("Result of the sum : %d\n", sum);
+
+    int fd2 = open("sum", O_WRONLY);
+    if (fd2 == -1)
+    {
+        return 3;
+    }
+
+    if (write(fd2, &sum, sizeof(sum)) == -1)
+    {
+        return 4;
+    }
+
+    close(fd2);
 
     return 0;
 }
