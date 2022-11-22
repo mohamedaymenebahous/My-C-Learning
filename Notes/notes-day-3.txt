@@ -1,0 +1,8 @@
+Reading from a pipe uses file descriptor fd[0]
+Writing to a pipe uses file descriptor fd[1]
+
+It's not possible to have a pipe that both sends data and receives data in the 
+same process
+=>Solution : create two pipes, one used for reading and one for writing, and 
+each one of the pipes is monodirectional, either from parent to child, or 
+from child to parent  
