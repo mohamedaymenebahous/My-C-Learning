@@ -22,5 +22,5 @@ as 'defunct', but still somehow resides in the processor's memory as a 'zombie')
 [image-2]
 
 The wait function waits for only one child process to finish, the other children 
-processes termination is ignored wheter it finishes or not, which puts us in a pickle with this function (be
-careful when using it with multiple children processes)
+processes termination is ignored wheter it finishes or not, which puts us in a pickle 
+with this function (becareful when using it with multiple children processes)
